@@ -5,10 +5,8 @@ const connectDB = async () => {
         mongoose.connection.on('connected', () => console.log('Database Connected'));
         mongoose.connection.on('error', (err) => console.error('MongoDB error:', err));
 
-        await mongoose.connect(`${process.env.MONGODB_URI}/gurukul`, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
+        await mongoose.connect(`${process.env.MONGODB_URI}/gurukul`);
+        // Removed deprecated options
     } catch (error) {
         console.error('MongoDB connection failed:', error);
         process.exit(1);
